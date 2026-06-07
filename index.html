@@ -1,0 +1,529 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ポケカBOX 買取価格 比較ボード</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=JetBrains+Mono:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0e13;--bg2:#11161f;--panel:#161c27;--panel-edge:#222c3a;
+    --ink:#eef2f7;--muted:#8593a6;--faint:#5a6677;
+    --gold:#f7c948;--gold-deep:#caa233;--best:#3ddc97;--best-bg:rgba(61,220,151,.10);
+    --warn:#ff6b6b;--radius:16px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--bg);color:var(--ink);font-family:"Zen Kaku Gothic New",sans-serif}
+  body{min-height:100vh;background:
+      radial-gradient(1200px 600px at 12% -10%, rgba(247,201,72,.07), transparent 60%),
+      radial-gradient(900px 500px at 100% 0%, rgba(61,220,151,.06), transparent 55%),
+      linear-gradient(180deg,var(--bg),var(--bg2));background-attachment:fixed;}
+  body::after{content:"";position:fixed;inset:0;pointer-events:none;opacity:.035;z-index:1;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+  .wrap{max-width:1100px;margin:0 auto;padding:28px 18px 80px;position:relative;z-index:2}
+
+  header{display:flex;flex-direction:column;gap:16px;margin-bottom:20px}
+  .topline{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .logo{font-weight:900;font-size:clamp(21px,4.4vw,32px);letter-spacing:-.02em;line-height:1}
+  .logo b{color:var(--gold)}
+  .badge{font-family:"JetBrains Mono",monospace;font-size:11px;font-weight:600;letter-spacing:.06em;
+    color:var(--gold);background:transparent;border:1px solid var(--gold-deep);padding:5px 9px;border-radius:999px;text-transform:uppercase}
+  .sub{color:var(--muted);font-size:13px;max-width:64ch;line-height:1.6}
+  .meta{display:flex;gap:16px;flex-wrap:wrap;font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--faint)}
+  .meta b{color:var(--ink);font-weight:600}
+  .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--faint);margin-right:6px;vertical-align:middle}
+  .dot.live{background:var(--best);box-shadow:0 0 8px var(--best)}
+
+  /* loader */
+  .dropzone{border:1.5px dashed var(--panel-edge);border-radius:14px;padding:20px;text-align:center;
+    background:rgba(255,255,255,.012);transition:.18s;margin-bottom:18px}
+  .dropzone.drag{border-color:var(--gold);background:rgba(247,201,72,.06)}
+  .dropzone p{color:var(--muted);font-size:13px;margin-bottom:12px;line-height:1.6}
+  .dropzone .btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+  .btn{font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;border-radius:10px;padding:10px 16px;transition:.18s;border:1px solid var(--panel-edge);background:var(--panel);color:var(--ink)}
+  .btn:hover{border-color:#3a4658}
+  .btn.gold{background:var(--gold);color:#1a1205;border-color:var(--gold)}
+  .err{color:var(--warn);font-size:12px;margin-top:10px;min-height:1em}
+
+  .controls{display:none;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+  .controls.show{display:flex}
+  .search{flex:1;min-width:200px;display:flex;align-items:center;gap:10px;background:var(--panel);border:1px solid var(--panel-edge);border-radius:12px;padding:11px 14px}
+  .search input{flex:1;background:none;border:none;outline:none;color:var(--ink);font-family:inherit;font-size:15px}
+  .search input::placeholder{color:var(--faint)}
+  .search svg{flex:none;opacity:.6}
+  .btns2{display:flex;gap:8px;flex-wrap:wrap}
+  .btns2 button{font-family:inherit;font-size:13px;font-weight:500;color:var(--muted);cursor:pointer;background:var(--panel);border:1px solid var(--panel-edge);border-radius:10px;padding:10px 13px;transition:.18s}
+  .btns2 button:hover{color:var(--ink);border-color:#33404f}
+  .btns2 button.on{background:var(--gold);color:#1a1205;border-color:var(--gold);font-weight:700}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+  .card{background:linear-gradient(180deg,var(--panel),#131925);border:1px solid var(--panel-edge);border-radius:var(--radius);padding:18px 18px 14px;
+    opacity:0;transform:translateY(10px);animation:rise .5s forwards;transition:border-color .2s,transform .2s}
+  .card:hover{border-color:#3a4658;transform:translateY(-3px)}
+  @keyframes rise{to{opacity:1;transform:none}}
+  .chead{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:14px}
+  .cname{font-weight:700;font-size:16px;line-height:1.3}
+  .cmeta{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--muted);margin-top:4px}
+  .rel-na{color:var(--faint)}
+  .tag{font-family:"JetBrains Mono",monospace;font-size:10px;font-weight:600;letter-spacing:.04em;color:var(--gold);border:1px solid var(--gold-deep);border-radius:6px;padding:3px 6px;white-space:nowrap;flex:none}
+  .tags{display:flex;flex-direction:column;gap:4px;align-items:flex-end;flex:none}
+  .tag.cat{color:var(--muted);border-color:var(--panel-edge)}
+  .unmapped{font-size:10px;color:var(--warn);margin-top:3px}
+
+  .stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px;padding-bottom:14px;border-bottom:1px dashed var(--panel-edge)}
+  .stat{display:flex;flex-direction:column;gap:4px;min-width:0}
+  .slabel{font-size:10px;font-weight:700;letter-spacing:.04em;color:var(--faint)}
+  .bestprice{font-family:"JetBrains Mono",monospace;font-weight:800;font-size:22px;color:var(--ink);letter-spacing:-.02em;line-height:1}
+  .bestprice .yen{font-size:13px;color:var(--muted);font-weight:600;margin-right:1px}
+  .margin{font-family:"JetBrains Mono",monospace;font-weight:800;font-size:22px;letter-spacing:-.02em;line-height:1}
+  .margin.pos{color:var(--best)} .margin.neg{color:var(--warn)} .margin.na{color:var(--faint);font-size:15px}
+  .bestshop{font-size:11px;color:var(--muted)} .bestshop b{color:var(--best);font-weight:700}
+  .teika{font-size:11px;color:var(--faint)}
+
+  .shoplist{display:flex;flex-direction:column;gap:2px}
+  .shop{display:flex;align-items:center;justify-content:space-between;padding:7px 9px;border-radius:9px;font-size:13px}
+  .shop.top{background:var(--best-bg)}
+  .shop .nm{color:var(--muted)} .shop.top .nm{color:var(--ink);font-weight:600}
+  .shop .pr{font-family:"JetBrains Mono",monospace;font-weight:600;color:var(--faint)}
+  .shop.top .pr{color:var(--best);font-weight:800}
+  .shop.none{opacity:.4} .shop.none .pr{color:var(--faint);font-weight:600}
+
+  .empty{text-align:center;color:var(--faint);padding:50px 0;font-size:14px;grid-column:1/-1}
+  footer{margin-top:34px;color:var(--faint);font-size:12px;line-height:1.7;border-top:1px solid var(--panel-edge);padding-top:18px}
+  footer b{color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="topline">
+      <div class="logo">ポケカBOX <b>買取ボード</b></div>
+      <span class="badge">prototype</span>
+    </div>
+    <p class="sub">スクレイパーが出力した <code>prices.json</code> を読み込み、店ごとの表記ゆれを名寄せして、最高買取額と「定価との差益」を比較表示します。</p>
+    <div class="meta">
+      <span><span class="dot" id="livedot"></span>状態：<b id="status">未読込</b></span>
+      <span>店舗：<b id="shopcount">0</b></span>
+      <span>BOX：<b id="boxcount">0</b> 種</span>
+      <span>取得時刻：<b id="ts">—</b></span>
+      <span>定価未設定：<b id="noteika">0</b></span>
+    </div>
+  </header>
+
+  <div class="dropzone" id="dz">
+    <p>ここに <b>prices.json</b> をドラッグ＆ドロップ、またはファイルを選択<br>
+       （まず動きを見たい場合は「サンプルを読む」）</p>
+    <div class="btns">
+      <label class="btn">ファイルを選択<input id="file" type="file" accept=".json,application/json" hidden></label>
+      <button class="btn gold" id="sample">サンプルを読む</button>
+    </div>
+    <div class="err" id="err"></div>
+  </div>
+
+  <div class="controls" id="controls">
+    <label class="search">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3-3"/></svg>
+      <input id="q" type="text" placeholder="BOX名で検索" autocomplete="off">
+    </label>
+    <div class="btns2" id="series"></div>
+    <div class="btns2" id="cats"></div>
+    <div class="btns2">
+      <button data-sort="best">買取が高い順</button>
+      <button data-sort="release" class="on">発売日が新しい順</button>
+      <button data-sort="margin">差益が大きい順</button>
+      <button data-sort="name">名前順</button>
+    </div>
+  </div>
+
+  <div class="grid" id="grid"></div>
+
+  <footer>
+    <b>名寄せ（表記ゆれ統一）：</b> 店ごとに違う商品名を共通名へ寄せています。先頭の「【BOX】」等を除去し、<code>ALIASES</code>（コード内）で別名を共通名へ変換。未登録の名前はそのまま表示し、<span style="color:var(--warn)">未マッピング</span>印を付けます。新しい店を足したら ALIASES に追記してください。<br>
+    <b>定価との差益：</b> <code>TEIKA</code>（共通名→定価）に入っている分だけ「最高買取額 − 定価」を計算します。<b>現在の定価は仮の値で要確認</b>。未設定は「—」表示です。
+  </footer>
+</div>
+
+<script>
+// ============== 名寄せ・定価テーブル（運用しながら育てる） ==============
+// 店の表記 → 共通名（先頭の【…】除去後の名前で判定）
+const ALIASES = {
+  "テラスタルフェスex": "テラスタルフェスティバルex",
+  "MEGAドリームex": "メガドリームex",
+  "イーブイズ プロモパック": "YU NAGABA イーブイズ プロモパック",   // 「」抽出でブランド名が落ちた分を統合
+  "VSTARスペシャルセット": "VSTARスペシャルセット ロストアビス",     // 弾名なしの表記を統合（中身はロストアビス）
+  // 新しい店を足したら表記ゆれをここに追記
+};
+// 共通名 → 定価（※現状は仮の値。実値に差し替えてください。未設定は差益「—」）
+const TEIKA = {
+  "超電ブレイカー": 5400,
+  "テラスタルフェスティバルex": 6200,
+  "クリムゾンヘイズ": 5400,
+  "変幻の仮面": 5400,
+  "ステラミラクル": 5400,
+  "ナイトワンダラー": 5400,
+  "楽園ドラゴーナ": 5400,
+};
+// 共通名 → 発売日（出典: 公式 pokemon-card.com 等 / 2024年分は一般情報。未掲載は未設定）
+const RELEASE = {
+  "クリムゾンヘイズ": "2024-03-22",
+  "変幻の仮面": "2024-04-26",
+  "ナイトワンダラー": "2024-06-07",
+  "ステラミラクル": "2024-07-19",
+  "楽園ドラゴーナ": "2024-09-13",
+  "超電ブレイカー": "2024-10-18",
+  "テラスタルフェスティバルex": "2024-11-22",
+  "バトルパートナーズ": "2025-01-24",
+  "ブラックボルト": "2025-06-06",
+  "ホワイトフレア": "2025-06-06",
+  "メガブレイブ": "2025-08-01",
+  "メガシンフォニア": "2025-08-01",
+  "インフェルノX": "2025-09-26",
+  "メガドリームex": "2025-11-28",
+  "ムニキスゼロ": "2026-01-23",
+  "ニンジャスピナー": "2026-03-13",
+  // --- スペシャル系（発売日を調査して追加） ---
+  "ポケモンセンター トウホク": "2025-06-13",
+  "ポケモンセンター ヒロシマ": "2025-06-13",
+  "ポケモンセンター フクオカ": "2025-06-13",
+  "ポケモンセンター カナザワ": "2020-11-20",
+  "メガブレイブ センターセット": "2025-08-01",
+  "メガシンフォニア センターセット": "2025-08-01",
+  "スターターセットメガゲンガー": "2025-09-05",
+  "スペシャルカードセット メガエルレイドex": "2026-01-23",
+  "スペシャルデッキセット フシギバナ・リザードン・カメックス": "2023-11-10",
+  "クレイバースト＆スノーハザード ジムセット": "2023-04-14",
+  "ブラックボルト・ホワイトフレア カードファイルセット": "2025-06-06",
+  "ブラックボルト/ホワイトフレア カードファイルセット": "2025-06-06",
+  "25th ANNIVERSARY COLLECTION スペシャルセット": "2021-10-22",
+  "25th アニバーサリー プロモパック": "2021-10-22",
+  "黒炎の支配者": "2023-07-28",
+  "151": "2023-06-16",
+  "ワールドチャンピオンシップス2023横浜": "2023-07-28",
+  "25th ANNIVERSARY GOLDEN": "2021-10-22",
+  "ロケット団の栄光 アタッシュケースセット": "2025-04-18",
+  "YU NAGABA イーブイズ プロモパック": "2023-05-24",
+  "VMAXスペシャルセット イーブイヒーローズ": "2021-05-28",
+  "VMAXスペシャルセット": "2020-10-23",
+  "VSTARスペシャルセット ロストアビス": "2022-08-05",
+  "Classic": "2023-03-25",
+  "プレシャスコレクター": "2022-05-10",
+  // --- ONE PIECE 全弾（OP/EB/PRB） ---
+  "OP-01 ROMANCE DAWN": "2022-07-22",
+  "OP-02 頂上決戦": "2022-11-04",
+  "OP-03 強大な敵": "2023-02-11",
+  "OP-04 謀略の王国": "2023-05-27",
+  "OP-05 新時代の主役": "2023-08-26",
+  "OP-06 双璧の覇者": "2023-11-25",
+  "OP-07 500年後の未来": "2024-02-24",
+  "OP-08 二つの伝説": "2024-05-25",
+  "OP-09 新たなる皇帝": "2024-08-31",
+  "OP-10 王族の血統": "2024-11-30",
+  "OP-11 神速の拳": "2025-03-01",
+  "OP-12 師弟の絆": "2025-05-31",
+  "OP-13 受け継がれる意志": "2025-08-23",
+  "OP-14 蒼海の七傑": "2025-11-22",
+  "OP-15 神の島の冒険": "2026-02-28",
+  "OP-16 決戦の刻": "2026-05-30",
+  "EB-01 メモリアルコレクション": "2024-01-27",
+  "EB-02 Anime 25th collection": "2025-01-25",
+  "EB-03 ヒロインズエディション": "2025-10-25",
+  "EB-04 EGGHEAD CRISIS": "2026-01-31",
+  "PRB-01 THE BEST": "2024-07-27",
+  "PRB-02 THE BEST2": "2025-07-26",
+};
+const fmtDate = iso => iso ? iso.replace(/-/g, "/") : "";
+
+// ============== サンプルデータ（prices.json と同じ形式） ==============
+const SAMPLE = [{
+  "shop":"ホムラ","scraped_at":"2026-05-30T04:00:00+00:00","items":[
+    {"name":"【BOX】超電ブレイカー","price":42000,"category":"シュリンク有り"},
+    {"name":"【BOX】ロケット団の栄光","price":33000,"category":"シュリンク有り"},
+    {"name":"【BOX】ブラックボルト","price":28500,"category":"シュリンク有り"},
+    {"name":"【BOX】インフェルノX","price":28000,"category":"シュリンク有り"},
+    {"name":"【BOX】ホワイトフレア","price":25000,"category":"シュリンク有り"},
+    {"name":"【BOX】テラスタルフェスex","price":23500,"category":"シュリンク有り"},
+    {"name":"【BOX】楽園ドラゴーナ","price":21500,"category":"シュリンク有り"},
+    {"name":"【BOX】メガドリームex","price":17500,"category":"シュリンク有り"},
+    {"name":"【BOX】クリムゾンヘイズ","price":15800,"category":"シュリンク有り"},
+    {"name":"【BOX】メガブレイブ","price":14000,"category":"シュリンク有り"},
+    {"name":"【BOX】変幻の仮面","price":14000,"category":"シュリンク有り"},
+    {"name":"【BOX】ニンジャスピナー","price":12200,"category":"シュリンク有り"},
+    {"name":"【BOX】ステラミラクル","price":11200,"category":"シュリンク有り"},
+    {"name":"【BOX】ナイトワンダラー","price":11000,"category":"シュリンク有り"},
+    {"name":"【BOX】ムニキスゼロ","price":9100,"category":"シュリンク有り"},
+    {"name":"【BOX】超電ブレイカー","price":38000,"category":"シュリンク無し"},
+    {"name":"【BOX】テラスタルフェスex","price":21000,"category":"シュリンク無し"},
+    {"name":"【BOX】クリムゾンヘイズ","price":14200,"category":"シュリンク無し"},
+    {"name":"イーブイズセット","price":380000,"category":"スペシャルセット"},
+    {"name":"25th ANNIVERSARY GOLDEN BOX","price":300000,"category":"スペシャルセット"},
+    {"name":"スペシャルデッキセットex フシギバナ・リザードン・カメックス","price":50000,"category":"スペシャルセット"},
+    {"name":"ロケット団の栄光 アタッシュケースセット","price":35500,"category":"スペシャルセット"}
+  ]
+},{
+  "shop":"ルデヤ","scraped_at":"2026-05-30T02:33:00+00:00","items":[
+    {"name":"ポケモンカードゲーム MEGA 拡張パック インフェルノX BOX","price":24000,"category":"シュリンク有り"},
+    {"name":"ポケモンカード S&V ハイクラスパック テラスタルフェスex BOX","price":20100,"category":"シュリンク有り"},
+    {"name":"ポケモンカード S&V 拡張パック ブラックボルト BOX","price":19500,"category":"シュリンク有り"},
+    {"name":"ポケモンカード S&V 拡張パック ホワイトフレア BOX","price":18500,"category":"シュリンク有り"},
+    {"name":"ポケモンカード S&V ハイクラスパック MEGAドリームex BOX","price":15800,"category":"シュリンク有り"},
+    {"name":"ポケモンカードゲーム MEGA 拡張パック ニンジャスピナー BOX","price":11100,"category":"シュリンク有り"},
+    {"name":"ポケモンカード MEGA 拡張パック メガブレイブ BOX","price":11700,"category":"シュリンク有り"},
+    {"name":"ポケモンカード MEGA 拡張パック メガシンフォニア BOX","price":9800,"category":"シュリンク有り"},
+    {"name":"ONE PIECEカードゲーム 受け継がれる意志 OP-13 [BOX]","price":24200,"category":"シュリンク有り"},
+    {"name":"ONE PIECEカードゲーム 神の島の冒険 OP-15 [BOX]","price":10500,"category":"シュリンク有り"},
+    {"name":"ONE PIECEカードゲーム エクストラブースター EGGHEAD CRISIS EB-04 [BOX]","price":10500,"category":"シュリンク有り"},
+    {"name":"ONE PIECEカードゲーム プレミアムブースター THE BEST PRB-01 [BOX]","price":18100,"category":"シュリンク有り"}
+  ]
+}];
+
+// ============== ロジック ==============
+const yen = n => n.toLocaleString("ja-JP");
+let STATE = { boxes: [], shops: [], scrapedAt: null };
+let query = "", sortMode = "release", catFilter = "シュリンク有り", scopeFilter = "IN";
+
+function cleanName(raw){
+  let s = String(raw);
+  const deluxe = /デラックス|ＤＸ|DX/i.test(s);                 // DX(デラックス)版は後で正規化
+  const br = s.match(/[「『]([^」』]+)[」』]/);                   // シンソク等：「…」『…』の中が本体名
+  if(br) s = br[1];
+  s = s.replace(/\s*※.*$/, "");                               // 「※輸送箱未開封」等の注記を除去
+  s = s.replace(/^(新品|中古)\s*/, "");
+  s = s.replace(/^【[^】]*】\s*/, "");
+  s = s.replace(/ポケモンカードゲーム|ポケモンカード/g, "");
+  s = s.replace(/スカーレット\s*[＆&]\s*バイオレット|ソード\s*[＆&]\s*シールド|サン\s*[＆&]\s*ムーン|ソード\s*シールド/g, ""); // 版名の接頭（単体のスカーレットex等は温存）
+  s = s.replace(/ONE ?PIECEカードゲーム|ONE ?PIECE/gi, "");
+  s = s.replace(/S&V/gi, "");
+  s = s.replace(/(ハイクラスパック|強化拡張パックデラックス|強化拡張パック|拡張パックデラックス|拡張パック|デッキビルドBOX|プレミアムブースター|エクストラブースター|ブースターパック)/g, "");
+  s = s.replace(/[（(][0-9A-Za-z＋\+\-]+[）)]/g, "");          // (M5)(SV5a)（M1S）等のセットコード括弧を除去
+  s = s.replace(/[（(]\s*[）)]/g, "");                         // 残った空カッコを除去
+  s = s.replace(/シュリンク(付き|無し|あり|なし)?/g, "");         // ソムリエ等の残り表記
+  s = s.replace(/デラックス/g, "");
+  s = s.replace(/MEGA\s+/g, "");          // 「MEGA 拡張…」等の接頭。MEGAドリーム等は温存
+  s = s.replace(/\[?BOX\]?/gi, "");
+  s = s.replace(/ボックス/g, "");
+  s = s.replace(/未開封/g, "");                               // 「未開封」「(未開封)」「【未開封BOX】」等の状態表記
+  s = s.replace(/【\s*】|[（(]\s*[）)]/g, "");                  // 未開封等を除いた後の空括弧
+  s = s.replace(/\s+/g, " ").trim();
+  if(deluxe && !/DX/i.test(s)) s = s + "DX";
+  return s;
+}
+// ワンピース弾コード → セット名（OP=ブースター / EB=エクストラ / PRB=プレミアム）
+const OP_SETS = {
+  "OP-01":"ROMANCE DAWN","OP-02":"頂上決戦","OP-03":"強大な敵","OP-04":"謀略の王国",
+  "OP-05":"新時代の主役","OP-06":"双璧の覇者","OP-07":"500年後の未来","OP-08":"二つの伝説",
+  "OP-09":"新たなる皇帝","OP-10":"王族の血統","OP-11":"神速の拳","OP-12":"師弟の絆",
+  "OP-13":"受け継がれる意志","OP-14":"蒼海の七傑","OP-15":"神の島の冒険","OP-16":"決戦の刻",
+  "EB-01":"メモリアルコレクション","EB-02":"Anime 25th collection","EB-03":"ヒロインズエディション","EB-04":"EGGHEAD CRISIS",
+  "PRB-01":"THE BEST","PRB-02":"THE BEST2",
+};
+function opCode(raw){
+  const m = String(raw).match(/(OP|EB|PRB)-?\s*0*(\d{1,2})/i);
+  return m ? m[1].toUpperCase() + "-" + String(m[2]).padStart(2, "0") : null;
+}
+const PC_REGIONS = ["トウホク","フクオカ","ヒロシマ","オオサカ","サッポロ","ナゴヤ","トウキョウ","カナザワ","シブヤ","キョウト","ヨコハマ"];
+function normalize(raw){
+  const s = String(raw);
+  // ポケモンセンター地域限定スペシャルBOX：店ごとに表記差が大きいので地域名で統一
+  if(/ポケモンセンター|スペシャルBOX|ポケセン/.test(s)){
+    const r = PC_REGIONS.find(x => s.includes(x));
+    if(r) return "ポケモンセンター " + r;
+  }
+  // 「○○ ポケセンセット」は通常ブースターBOXと別商品。混同を防ぐため別名にする
+  if(/ポケセンセット|ポケモンセンターセット|ポケモンセンター限定セット/.test(s)){
+    const br = s.match(/[「『]([^」』]+)[」』]/);
+    const core = cleanName(br ? br[1] : s.replace(/ポケセンセット|ポケモンセンターセット|ポケモンセンター限定セット/g, ""));
+    return core + " センターセット";
+  }
+  // スペシャルデッキセットex（御三家／フシギバナ・リザードン・カメックス等）：店ごとの表記差を吸収して統合
+  if(/スペシャルデッキセット/.test(s)){
+    const br = s.match(/[「『]([^」』]+)[」』]/);
+    const core = cleanName(br ? br[1] : s.replace(/.*スペシャルデッキセット(ex)?/, ""));
+    return "スペシャルデッキセット " + core;
+  }
+  const code = opCode(raw);                                   // ワンピースはコードで名寄せ
+  if(code) return OP_SETS[code] ? code + " " + OP_SETS[code] : code;
+  const c = cleanName(raw);
+  return ALIASES[c] || c;
+}
+
+// ============== シリーズ分類（取り込み対象を絞る） ==============
+const MEGA_SETS = ["インフェルノX","ニンジャスピナー","ムニキスゼロ","アビスアイ","メガブレイブ","メガシンフォニア","メガドリームex"];
+const SV_SETS   = ["クリムゾンヘイズ","変幻の仮面","ナイトワンダラー","ステラミラクル","楽園ドラゴーナ","超電ブレイカー","テラスタルフェスティバルex","バトルパートナーズ","ブラックボルト","ホワイトフレア","ブラックボルトDX","ホワイトフレアDX","熱風のアリーナ","ロケット団の栄光","ワイルドフォース","サイバージャッジ","古代の咆哮","未来の一閃","シャイニートレジャーex","黒炎の支配者","クレイバースト","スノーハザード","レイジングサーフ","スカーレットex","バイオレットex","トリプレットビート","151"];
+const SP_PAT = /スペシャル|GOLDEN|ANNIVERSARY|25th|イーブイズ|アタッシュ|デッキセット|ジムセット|コレクション|プレシャス|プレミアム|ポケモンセンター/;
+const IN_SCOPE = ["MEGA","SV","スペシャル","ONE PIECE"];
+// 名前ベースで特別セット扱いにする canon（ポケセン地域BOX／スペシャルデッキセット／センターセット）
+const SP_CANON = /^ポケモンセンター |^スペシャルデッキセット| センターセット$/;
+function series(name, category){
+  const n = String(name);
+  if(/^(OP|EB|PRB)-\d/i.test(n)) return "ONE PIECE";
+  if(SP_CANON.test(n)) return "スペシャル";                 // ポケセン地域BOX/スペシャルデッキセット/センターセット
+  if(category === "スペシャルセット") return "スペシャル";   // スペシャルは店のカテゴリ基準（緩い名前判定は旧品を大量誤検出するため廃止）
+  if(MEGA_SETS.includes(n)) return "MEGA";                  // メガは明示リストのみ（メガニウム/メガバトルデッキ等の誤検出を防ぐ）
+  if(SV_SETS.includes(n)) return "SV";
+  return "その他";
+}
+
+function buildBoxes(data){
+  const map = {}, shops = new Set(); let scrapedAt = null;
+  for(const rec of data){
+    if(!rec || !Array.isArray(rec.items)) continue;
+    shops.add(rec.shop);
+    if(rec.scraped_at) scrapedAt = rec.scraped_at;
+    for(const it of rec.items){
+      const canon = normalize(it.name);
+      let cat = it.category || "";
+      // 特別セット（スペシャルセット／ポケセン地域BOX／センターセット）は有/無の区別が無く、
+      // 店ごとに区分タグが割れる（ホムラ=スペシャルセット, 他=シュリンク有り）ので区分を寄せて結合する。
+      if(cat === "スペシャルセット" || SP_CANON.test(canon)) cat = "スペシャルセット";
+      const key = canon + "|" + cat;            // 区分ごとに別BOX扱い（シュリンク有/無）
+      if(!map[key]) map[key] = { name: canon, category: cat, prices: {}, raw: new Set() };
+      map[key].prices[rec.shop] = it.price;
+      map[key].raw.add(it.name);
+    }
+  }
+  return { boxes: Object.values(map), shops: [...shops], scrapedAt };
+}
+
+function load(data){
+  try{
+    if(!Array.isArray(data)) throw new Error("配列形式ではありません");
+    STATE = buildBoxes(data);
+  }catch(e){ showErr("読み込みエラー: " + e.message); return; }
+  showErr("");
+  document.getElementById("livedot").classList.add("live");
+  document.getElementById("status").textContent = "読込済み";
+  document.getElementById("shopcount").textContent = STATE.shops.length;
+  document.getElementById("boxcount").textContent = STATE.boxes.length;
+  document.getElementById("ts").textContent = STATE.scrapedAt
+    ? new Date(STATE.scrapedAt).toLocaleString("ja-JP",{month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit"}) : "—";
+  document.getElementById("noteika").textContent =
+    STATE.boxes.filter(b => TEIKA[b.name] == null).length;
+  document.getElementById("controls").classList.add("show");
+  buildSeries();
+  buildCats();
+  render();
+}
+
+function buildSeries(){
+  const opts = [["IN","対象のみ"],["MEGA","MEGA"],["SV","SV"],["スペシャル","スペシャル"],["ONE PIECE","ONE PIECE"],["ALL","すべて"]];
+  const el = document.getElementById("series");
+  el.innerHTML = opts.map(([v,l]) => `<button data-scope="${v}" class="${v===scopeFilter?'on':''}">${l}</button>`).join("");
+  el.querySelectorAll("button").forEach(b => b.addEventListener("click", () => {
+    el.querySelectorAll("button").forEach(x => x.classList.remove("on"));
+    b.classList.add("on"); scopeFilter = b.dataset.scope; render();
+  }));
+}
+
+function buildCats(){
+  const cats = [...new Set(STATE.boxes.map(b => b.category).filter(Boolean))];
+  const el = document.getElementById("cats");
+  const mk = (v,l) => `<button data-cat="${v}" class="${v===catFilter?'on':''}">${l}</button>`;
+  el.innerHTML = mk("ALL","すべて") + cats.map(c => mk(c,c)).join("");
+  el.querySelectorAll("button").forEach(b => b.addEventListener("click", () => {
+    el.querySelectorAll("button").forEach(x => x.classList.remove("on"));
+    b.classList.add("on"); catFilter = b.dataset.cat; render();
+  }));
+}
+
+function bestOf(box){
+  const pairs = Object.entries(box.prices).map(([shop,price]) => ({shop,price}));
+  pairs.sort((a,b) => b.price - a.price);
+  return { sorted: pairs, best: pairs[0] };
+}
+
+function render(){
+  const grid = document.getElementById("grid");
+  let rows = STATE.boxes
+    .filter(b => catFilter === "ALL" || b.category === catFilter)
+    .filter(b => b.name.toLowerCase().includes(query.toLowerCase()))
+    .map(b => { const {sorted,best} = bestOf(b); const teika = TEIKA[b.name] ?? null; const release = RELEASE[b.name] ?? null; const ser = series(b.name, b.category);
+      return {...b, sorted, best, teika, release, series: ser, margin: teika != null ? best.price - teika : null}; })
+    .filter(r => scopeFilter === "ALL" ? true : scopeFilter === "IN" ? IN_SCOPE.includes(r.series) : r.series === scopeFilter);
+
+  if(sortMode === "best") rows.sort((a,b) => b.best.price - a.best.price);
+  else if(sortMode === "margin") rows.sort((a,b) => (b.margin ?? -Infinity) - (a.margin ?? -Infinity));
+  else if(sortMode === "release") rows.sort((a,b) => {
+    if(!a.release && !b.release) return 0;
+    if(!a.release) return 1;        // 未設定は末尾へ
+    if(!b.release) return -1;
+    return b.release.localeCompare(a.release);   // 新しい順
+  });
+  else rows.sort((a,b) => a.name.localeCompare(b.name,"ja"));
+
+  if(!rows.length){ grid.innerHTML = '<div class="empty">該当するBOXがありません。</div>'; return; }
+
+  grid.innerHTML = rows.map((r,i) => {
+    const shops = r.sorted.map((s,j) => `
+      <div class="shop ${j===0?'top':''}">
+        <span class="nm">${j===0?'★ ':''}${s.shop}</span>
+        <span class="pr"><span style="opacity:.6">¥</span>${yen(s.price)}</span>
+      </div>`).join("")
+      + STATE.shops.filter(sh => !(sh in r.prices)).map(sh => `
+      <div class="shop none">
+        <span class="nm">${sh}</span>
+        <span class="pr">—</span>
+      </div>`).join("");
+    let marginHtml;
+    if(r.margin == null) marginHtml = `<span class="margin na">—</span><span class="teika">定価未設定</span>`;
+    else { const pos = r.margin >= 0;
+      marginHtml = `<span class="margin ${pos?'pos':'neg'}">${pos?'+':'−'}¥${yen(Math.abs(r.margin))}</span><span class="teika">定価 ¥${yen(r.teika)}</span>`; }
+    return `
+    <div class="card" style="animation-delay:${i*40}ms">
+      <div class="chead">
+        <div>
+          <div class="cname">${r.name}</div>
+          <div class="cmeta">${r.release ? '発売 ' + fmtDate(r.release) : '<span class="rel-na">発売日未設定</span>'}</div>
+        </div>
+        <div class="tags">
+          <div class="tag">${r.series}</div>
+          ${r.category ? `<div class="tag cat">${r.category}</div>` : ''}
+        </div>
+      </div>
+      <div class="stats">
+        <div class="stat">
+          <span class="slabel">最高買取額</span>
+          <span class="bestprice"><span class="yen">¥</span>${yen(r.best.price)}</span>
+          <span class="bestshop">@ <b>${r.best.shop}</b></span>
+        </div>
+        <div class="stat">
+          <span class="slabel">定価との差益</span>
+          ${marginHtml}
+        </div>
+      </div>
+      <div class="shoplist">${shops}</div>
+    </div>`;
+  }).join("");
+}
+
+function showErr(m){ document.getElementById("err").textContent = m; }
+
+function readFile(file){
+  const r = new FileReader();
+  r.onload = () => { try{ load(JSON.parse(r.result)); } catch(e){ showErr("JSONの解析に失敗: " + e.message); } };
+  r.onerror = () => showErr("ファイル読み込みに失敗しました");
+  r.readAsText(file);
+}
+
+document.getElementById("file").addEventListener("change", e => { if(e.target.files[0]) readFile(e.target.files[0]); });
+document.getElementById("sample").addEventListener("click", () => load(SAMPLE));
+document.getElementById("q").addEventListener("input", e => { query = e.target.value; render(); });
+document.querySelectorAll(".btns2 [data-sort]").forEach(b => b.addEventListener("click", () => {
+  document.querySelectorAll(".btns2 [data-sort]").forEach(x => x.classList.remove("on"));
+  b.classList.add("on"); sortMode = b.dataset.sort; render();
+}));
+const dz = document.getElementById("dz");
+["dragenter","dragover"].forEach(ev => dz.addEventListener(ev, e => { e.preventDefault(); dz.classList.add("drag"); }));
+["dragleave","drop"].forEach(ev => dz.addEventListener(ev, e => { e.preventDefault(); dz.classList.remove("drag"); }));
+dz.addEventListener("drop", e => { const f = e.dataTransfer.files[0]; if(f) readFile(f); });
+
+// 公開サイト用：同じフォルダの prices.json を自動読み込み（?t= はキャッシュ回避）。
+// 無い場合（ローカルでHTML単体を開いた等）は読み込まず、ドロップゾーン/サンプルのまま。
+fetch("prices.json?t=" + Date.now())
+  .then(r => r.ok ? r.json() : Promise.reject())
+  .then(data => load(data))
+  .catch(() => {});
+</script>
+</body>
+</html>
