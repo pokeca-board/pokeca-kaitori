@@ -104,7 +104,6 @@
       <div class="logo">ポケカBOX <b>買取ボード</b></div>
       <span class="badge">prototype</span>
     </div>
-    <p class="sub">スクレイパーが出力した <code>prices.json</code> を読み込み、店ごとの表記ゆれを名寄せして、最高買取額と「定価との差益」を比較表示します。</p>
     <div class="meta">
       <span><span class="dot" id="livedot"></span>状態：<b id="status">未読込</b></span>
       <span>店舗：<b id="shopcount">0</b></span>
@@ -114,15 +113,7 @@
     </div>
   </header>
 
-  <div class="dropzone" id="dz">
-    <p>ここに <b>prices.json</b> をドラッグ＆ドロップ、またはファイルを選択<br>
-       （まず動きを見たい場合は「サンプルを読む」）</p>
-    <div class="btns">
-      <label class="btn">ファイルを選択<input id="file" type="file" accept=".json,application/json" hidden></label>
-      <button class="btn gold" id="sample">サンプルを読む</button>
-    </div>
-    <div class="err" id="err"></div>
-  </div>
+  <div class="err" id="err"></div>
 
   <div class="controls" id="controls">
     <label class="search">
@@ -515,31 +506,16 @@ function render(){
 
 function showErr(m){ document.getElementById("err").textContent = m; }
 
-function readFile(file){
-  const r = new FileReader();
-  r.onload = () => { try{ load(JSON.parse(r.result)); } catch(e){ showErr("JSONの解析に失敗: " + e.message); } };
-  r.onerror = () => showErr("ファイル読み込みに失敗しました");
-  r.readAsText(file);
-}
-
-document.getElementById("file").addEventListener("change", e => { if(e.target.files[0]) readFile(e.target.files[0]); });
-document.getElementById("sample").addEventListener("click", () => load(SAMPLE));
 document.getElementById("q").addEventListener("input", e => { query = e.target.value; render(); });
 document.querySelectorAll(".btns2 [data-sort]").forEach(b => b.addEventListener("click", () => {
   document.querySelectorAll(".btns2 [data-sort]").forEach(x => x.classList.remove("on"));
   b.classList.add("on"); sortMode = b.dataset.sort; render();
 }));
-const dz = document.getElementById("dz");
-["dragenter","dragover"].forEach(ev => dz.addEventListener(ev, e => { e.preventDefault(); dz.classList.add("drag"); }));
-["dragleave","drop"].forEach(ev => dz.addEventListener(ev, e => { e.preventDefault(); dz.classList.remove("drag"); }));
-dz.addEventListener("drop", e => { const f = e.dataTransfer.files[0]; if(f) readFile(f); });
-
 // 公開サイト用：同じフォルダの prices.json を自動読み込み（?t= はキャッシュ回避）。
-// 無い場合（ローカルでHTML単体を開いた等）は読み込まず、ドロップゾーン/サンプルのまま。
 fetch("prices.json?t=" + Date.now())
   .then(r => r.ok ? r.json() : Promise.reject())
   .then(data => load(data))
-  .catch(() => {});
+  .catch(() => showErr("価格データを読み込めませんでした。時間をおいて再度お試しください。"));
 </script>
 </body>
 </html>
