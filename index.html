@@ -717,16 +717,16 @@ function renderCart(){
   }).join("");
   const { rows, n } = cartTotals();
   const best = rows.find(r => r.missing===0) || rows[0];
-  const rank = rows.map((r,idx) => {
+  const rank = rows.slice(0,3).map((r,idx) => {
     const isBest = best && r.shop===best.shop;
     const miss = r.missing>0 ? `<span class="crmiss">未対応 ${r.missing}点</span>` : "";
     return `<div class="crow${isBest?' best':''}">
-      <span class="crname"><span class="crrank">${idx+1}</span>${isBest?'★ ':''}${htmlEsc(shopLabel(r.shop))} ${miss}</span>
+      <span class="crname"><span class="crrank">${idx+1}</span>${isBest?'★ ':''}${shopLabel(r.shop)} ${miss}</span>
       <span class="crtot">¥${yen(r.total)}</span>
     </div>`;
   }).join("");
   body.innerHTML = items
-    + `<div class="crank"><h4>店舗別 合計買取額（${n}種・計${cartCount()}個）</h4>${rank || '<div class="cartempty">対応する店舗がありません。</div>'}</div>`
+    + `<div class="crank"><h4>店舗別 合計買取額 トップ3（${n}種・計${cartCount()}個）</h4>${rank || '<div class="cartempty">対応する店舗がありません。</div>'}</div>`
     + `<div class="cartfoot"><button class="cartclear" id="cartclearbtn">カートを空にする</button></div>`;
 }
 function openCart(){ renderCart(); document.getElementById("cartpanel").classList.add("show"); document.getElementById("cartoverlay").classList.add("show"); }
