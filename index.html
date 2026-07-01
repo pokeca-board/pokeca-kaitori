@@ -50,8 +50,8 @@
   .controls{display:none;flex-direction:column;align-items:stretch;gap:10px;margin-bottom:14px}
   .controls.show{display:flex}
   .ctlrow{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-  .search{flex:1;min-width:200px;display:flex;align-items:center;gap:10px;background:var(--panel);border:1px solid var(--panel-edge);border-radius:12px;padding:11px 14px}
-  .search input{flex:1;background:none;border:none;outline:none;color:var(--ink);font-family:inherit;font-size:15px}
+  .search{flex:0 1 260px;min-width:170px;display:flex;align-items:center;gap:8px;background:var(--panel);border:1px solid var(--panel-edge);border-radius:12px;padding:9px 12px}
+  .search input{flex:1;background:none;border:none;outline:none;color:var(--ink);font-family:inherit;font-size:14px}
   .search input::placeholder{color:var(--faint)}
   .search svg{flex:none;opacity:.6}
   .btns2{display:flex;gap:8px;flex-wrap:wrap}
@@ -173,12 +173,14 @@
       </label>
       <div class="btns2" id="series"></div>
     </div>
-    <div class="btns2" id="cats"></div>
-    <div class="btns2">
-      <button data-sort="release" class="on">発売日が新しい順</button>
-      <button data-sort="best">買取が高い順</button>
-      <button data-sort="margin">差益が大きい順</button>
-      <button data-sort="name">名前順</button>
+    <div class="ctlrow">
+      <div class="btns2" id="cats"></div>
+      <div class="btns2">
+        <button data-sort="release" class="on">発売日が新しい順</button>
+        <button data-sort="best">買取が高い順</button>
+        <button data-sort="margin">差益が大きい順</button>
+        <button data-sort="name">名前順</button>
+      </div>
     </div>
   </div>
 
