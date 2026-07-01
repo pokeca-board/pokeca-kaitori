@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ポケカBOX 買取価格 比較ボード</title>
+<title>人気トレカ 買取価格 比較ボード</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=JetBrains+Mono:wght@400;600;800&display=swap" rel="stylesheet">
@@ -152,15 +152,13 @@
 <div class="wrap">
   <header>
     <div class="topline">
-      <div class="logo">ポケカBOX <b>買取ボード</b></div>
+      <div class="logo">人気トレカ <b>買取ボード</b></div>
       <span class="badge">prototype</span>
     </div>
     <div class="meta">
       <span><span class="dot" id="livedot"></span>状態：<b id="status">未読込</b></span>
       <span>店舗：<b id="shopcount">0</b></span>
-      <span>BOX：<b id="boxcount">0</b> 種</span>
       <span>取得時刻：<b id="ts">—</b></span>
-      <span>定価未設定：<b id="noteika">0</b></span>
     </div>
   </header>
 
@@ -291,13 +289,29 @@ const TEIKA = {
 };
 // 共通名 → 発売日（出典: 公式 pokemon-card.com 等 / 2024年分は一般情報。未掲載は未設定）
 const RELEASE = {
+  // --- 追加：発売日未登録だったSV弾（公式/カードラッシュで確認）---
+  "スカーレットex": "2023-01-20",
+  "バイオレットex": "2023-01-20",
+  "トリプレットビート": "2023-03-10",
+  "スノーハザード": "2023-04-14",
+  "クレイバースト": "2023-04-14",
+  "レイジングサーフ": "2023-09-22",
+  "古代の咆哮": "2023-10-27",
+  "未来の一閃": "2023-10-27",
+  "シャイニートレジャーex": "2023-12-01",
+  "サイバージャッジ": "2024-01-26",
+  "ワイルドフォース": "2024-01-26",
+  "熱風のアリーナ": "2025-03-14",
+  "ロケット団の栄光": "2025-04-18",
+  "ブラックボルトDX": "2025-06-06",
+  "ホワイトフレアDX": "2025-06-06",
   "クリムゾンヘイズ": "2024-03-22",
   "変幻の仮面": "2024-04-26",
   "ナイトワンダラー": "2024-06-07",
   "ステラミラクル": "2024-07-19",
   "楽園ドラゴーナ": "2024-09-13",
   "超電ブレイカー": "2024-10-18",
-  "テラスタルフェスティバルex": "2024-11-22",
+  "テラスタルフェスティバルex": "2024-12-06",
   "バトルパートナーズ": "2025-01-24",
   "ブラックボルト": "2025-06-06",
   "ホワイトフレア": "2025-06-06",
@@ -422,7 +436,7 @@ const SAMPLE = [{
 const yen = n => n.toLocaleString("ja-JP");
 let STATE = { boxes: [], shops: [], scrapedAt: null };
 let DELTAS = {};   // 商品キー(canon|cat) → {now, d1(前日比), d7(先週比), ...}
-let query = "", sortMode = "release", catFilter = "シュリンク有り", scopeFilter = "IN";
+let query = "", sortMode = "release", catFilter = "ALL", scopeFilter = "ALL";
 let CART = {};          // "canon|category" → 数量
 let BOX_BY_KEY = {};    // "canon|category" → box
 let firstPaint = true;  // 初回のみカード登場アニメ
@@ -542,11 +556,8 @@ function load(data){
   document.getElementById("livedot").classList.add("live");
   document.getElementById("status").textContent = "読込済み";
   document.getElementById("shopcount").textContent = STATE.shops.length;
-  document.getElementById("boxcount").textContent = STATE.boxes.length;
   document.getElementById("ts").textContent = STATE.scrapedAt
     ? new Date(STATE.scrapedAt).toLocaleString("ja-JP",{month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit"}) : "—";
-  document.getElementById("noteika").textContent =
-    STATE.boxes.filter(b => TEIKA[b.name] == null).length;
   document.getElementById("controls").classList.add("show");
   buildSeries();
   buildCats();
@@ -554,7 +565,7 @@ function load(data){
 }
 
 function buildSeries(){
-  const opts = [["IN","対象のみ"],["MEGA","MEGA"],["SV","SV"],["スペシャル","スペシャル"],["ONE PIECE","ONE PIECE"],["ALL","すべて"]];
+  const opts = [["MEGA","MEGA"],["スペシャル","スペシャル"],["SV","SV"],["ONE PIECE","ONE PIECE"],["ALL","すべて"]];
   const el = document.getElementById("series");
   el.innerHTML = opts.map(([v,l]) => `<button data-scope="${v}" class="${v===scopeFilter?'on':''}">${l}</button>`).join("");
   el.querySelectorAll("button").forEach(b => b.addEventListener("click", () => {
