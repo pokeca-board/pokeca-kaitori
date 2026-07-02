@@ -153,6 +153,15 @@
   .empty{text-align:center;color:var(--faint);padding:50px 0;font-size:14px;grid-column:1/-1}
   footer{margin-top:34px;color:var(--faint);font-size:12px;line-height:1.7;border-top:1px solid var(--panel-edge);padding-top:18px}
   footer b{color:var(--muted)}
+  /* スマホ：フィルターのボタンを小さく詰めて折り返しを防ぐ */
+  @media(max-width:560px){
+    .search{flex:1 1 100%}
+    .search input{font-size:14px}
+    .btns2{gap:5px}
+    .btns2 button{font-size:10.5px;padding:6px 7px;border-radius:8px}
+    /* 区切り線をスマホでは「改行」に転用（カテゴリと並び替えを別の行に分ける）*/
+    .ctldiv{flex-basis:100%;width:auto;height:0;min-height:0;margin:1px 0;background:none}
+  }
 </style>
 </head>
 <body>
