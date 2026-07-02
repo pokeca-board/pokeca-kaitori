@@ -596,8 +596,10 @@ function buildSeries(){
 }
 
 function buildCats(){
-  const order = ["シュリンク有り","シュリンク無し","スペシャルセット"];
+  // スペシャルセットは「シュリンク有り」に統合（ボタンは出さない）
+  const order = ["シュリンク有り","シュリンク無し"];
   const present = new Set(STATE.boxes.map(b => b.category).filter(Boolean));
+  present.delete("スペシャルセット");
   const cats = order.filter(c => present.has(c)).concat([...present].filter(c => !order.includes(c)));
   const el = document.getElementById("cats");
   const mk = (v,l) => `<button data-cat="${v}" class="${v===catFilter?'on':''}">${l}</button>`;
@@ -625,7 +627,9 @@ function chgBadge(label, v){
 function render(){
   const grid = document.getElementById("grid");
   let rows = STATE.boxes
-    .filter(b => catFilter === "ALL" || b.category === catFilter)
+    .filter(b => catFilter === "ALL"
+      || b.category === catFilter
+      || (catFilter === "シュリンク有り" && b.category === "スペシャルセット"))
     .filter(b => b.name.toLowerCase().includes(query.toLowerCase()))
     .map(b => { const {sorted,best} = bestOf(b); const teika = TEIKA[b.name] ?? null; const release = RELEASE[b.name] ?? null; const ser = series(b.name, b.category);
       return {...b, sorted, best, teika, release, series: ser, margin: teika != null ? best.price - teika : null}; })
