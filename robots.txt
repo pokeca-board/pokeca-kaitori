@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pokeca-board.github.io/pokeca-kaitori/sitemap.xml
