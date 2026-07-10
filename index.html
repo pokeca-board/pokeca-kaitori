@@ -495,7 +495,7 @@ const SAMPLE = [{
 const yen = n => n.toLocaleString("ja-JP");
 let STATE = { boxes: [], shops: [], scrapedAt: null };
 let DELTAS = {};   // 商品キー(canon|cat) → {now, d1(前日比), d7(先週比), ...}
-let query = "", sortMode = "release", catFilter = "ALL", scopeFilter = "ALL";
+let query = "", sortMode = "release", catFilter = "シュリンク有り", scopeFilter = "ALL";
 let CART = {};          // "canon|category" → 数量
 let BOX_BY_KEY = {};    // "canon|category" → box
 let firstPaint = true;  // 初回のみカード登場アニメ
