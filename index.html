@@ -256,6 +256,7 @@ const ALIASES = {
   "テラスタルフェス": "テラスタルフェスティバルex",       // デネブ表記
   "MEGAドリームex": "メガドリームex",
   "メガドリーム": "メガドリームex",                       // デネブ表記
+  "MEGAドリーム": "メガドリームex",                       // 買取マスター表記
   "イーブイズ プロモパック": "YU NAGABA イーブイズ プロモパック",   // 「」抽出でブランド名が落ちた分を統合
   "VSTARスペシャルセット": "VSTARスペシャルセット ロストアビス",     // 弾名なしの表記を統合（中身はロストアビス）
   // 新しい店を足したら表記ゆれをここに追記
@@ -441,6 +442,7 @@ const SHOP_URLS = {
   "トレカマサイ(X)": "https://x.com/ttt_kaitori",
   "BH秋葉原(X)": "https://x.com/toreka_besthigh",
   "デネブ(X)": "https://x.com/deneb_kaitori",
+  "買取マスター(X)": "https://x.com/kaitori__master",
 };
 const shopLabel = name => SHOP_URLS[name]
   ? `<a class="shoplink" href="${SHOP_URLS[name]}" target="_blank" rel="noopener">${name}</a>`
