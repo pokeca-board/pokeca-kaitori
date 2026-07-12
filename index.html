@@ -622,6 +622,16 @@ function buildBoxes(data){
       map[key].raw.add(it.name);
     }
   }
+  // 一般的な安全網：2位の価格の3倍を超える最高値は、カートン等の桁違い混入とみなして除外。
+  // 定価との比較ではなく「他店との比較」なので、元々相場が定価から乖離した商品（イーブイヒーローズ等）
+  // にも影響しない。比較できる店が2つ未満の商品（＝突き合わせ相手がいない）はそのまま残す。
+  for(const key in map){
+    let entries = Object.entries(map[key].prices).sort((a,b) => b[1]-a[1]);
+    while(entries.length >= 2 && entries[0][1] > entries[1][1] * 3){
+      delete map[key].prices[entries[0][0]];
+      entries = entries.slice(1);
+    }
+  }
   return { boxes: Object.values(map), shops: [...shops], scrapedAt };
 }
 
