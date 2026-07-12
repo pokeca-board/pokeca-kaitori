@@ -153,6 +153,9 @@
   .stat{display:flex;flex-direction:column;gap:4px;min-width:0}
   .slabel{font-size:10px;font-weight:700;letter-spacing:.04em;color:var(--faint)}
   .bestprice{font-family:"JetBrains Mono",monospace;font-weight:800;font-size:22px;color:var(--ink);letter-spacing:-.02em;line-height:1}
+  .bestprice.soon{color:var(--gold);font-size:16px;letter-spacing:0}
+  .card.upcoming{border-style:dashed;border-color:var(--gold-deep);opacity:.88}
+  .card.upcoming .cname::after{content:" 🔜";}
   .bestprice .yen{font-size:13px;color:var(--muted);font-weight:600;margin-right:1px}
   .margin{font-family:"JetBrains Mono",monospace;font-weight:800;font-size:22px;letter-spacing:-.02em;line-height:1}
   .margin.pos{color:var(--best)} .margin.neg{color:var(--warn)} .margin.na{color:var(--faint);font-size:15px}
@@ -334,6 +337,9 @@ const TEIKA = {
   // --- スペシャル系（公表定価が明確なもののみ）---
   "スペシャルカードセット メガエルレイドex": 1980,
   "スターターセットメガゲンガー": 1800,
+  "スターターセットex イーブイex": 1800,
+  "スターターセットex ゾロア＆ゾロアークex": 1800,
+  "スターターセットex ニャオハ＆マスカーニャex": 1800,
   "プレミアムトレーナーMEGA": 6350,
   "スタートデッキ100 バトルコレクション": 891,
   "フュージョンアーツ": 4950,                              // 165円×30パック
@@ -397,6 +403,9 @@ const RELEASE = {
   "メガブレイブ センターセット": "2025-08-01",
   "メガシンフォニア センターセット": "2025-08-01",
   "スターターセットメガゲンガー": "2025-09-05",
+  "スターターセットex イーブイex": "2026-07-31",
+  "スターターセットex ゾロア＆ゾロアークex": "2026-07-31",
+  "スターターセットex ニャオハ＆マスカーニャex": "2026-07-31",
   "スペシャルカードセット メガエルレイドex": "2026-01-23",
   "スペシャルデッキセット フシギバナ・リザードン・カメックス": "2023-11-10",
   "クレイバースト＆スノーハザード ジムセット": "2023-04-14",
@@ -589,6 +598,14 @@ const MEGA_SETS = ["インフェルノX","ニンジャスピナー","ムニキ�
 const SV_SETS   = ["クリムゾンヘイズ","変幻の仮面","ナイトワンダラー","ステラミラクル","楽園ドラゴーナ","超電ブレイカー","テラスタルフェスティバルex","バトルパートナーズ","ブラックボルト","ホワイトフレア","ブラックボルトDX","ホワイトフレアDX","熱風のアリーナ","ロケット団の栄光","ワイルドフォース","サイバージャッジ","古代の咆哮","未来の一閃","シャイニートレジャーex","黒炎の支配者","クレイバースト","スノーハザード","レイジングサーフ","スカーレットex","バイオレットex","トリプレットビート","151"];
 const SP_PAT = /スペシャル|GOLDEN|ANNIVERSARY|25th|イーブイズ|アタッシュ|デッキセット|ジムセット|コレクション|プレシャス|プレミアム|ポケモンセンター/;
 const IN_SCOPE = ["MEGA","SV","スペシャル","ONE PIECE"];
+// 発売告知済みだが、まだどの店も買取価格を出していない商品。
+// 「発売日」「定価」だけの空カードとして先出し表示する（店が扱い始めたら自動で実データに切り替わる）。
+const UPCOMING = [
+  {name: "ストームエメラルダ", category: "シュリンク有り"},
+  {name: "スターターセットex イーブイex", category: "スペシャルセット"},
+  {name: "スターターセットex ゾロア＆ゾロアークex", category: "スペシャルセット"},
+  {name: "スターターセットex ニャオハ＆マスカーニャex", category: "スペシャルセット"},
+];
 // 名前ベースで特別セット扱いにする canon（ポケセン地域BOX／スペシャルデッキセット／センターセット）
 const SP_CANON = /^ポケモンセンター |^スペシャルデッキセット| センターセット$|スタートデッキ100 バトルコレクション/;
 function series(name, category){
@@ -631,6 +648,11 @@ function buildBoxes(data){
       delete map[key].prices[entries[0][0]];
       entries = entries.slice(1);
     }
+  }
+  // 発売告知済み・未取扱の商品を空カードとして追加（実データが入ったら自動でそちらが優先される）
+  for(const u of UPCOMING){
+    const key = u.name + "|" + u.category;
+    if(!map[key]) map[key] = { name: u.name, category: u.category, prices: {}, raw: new Set() };
   }
   return { boxes: Object.values(map), shops: [...shops], scrapedAt };
 }
@@ -683,7 +705,7 @@ function buildCats(){
 function bestOf(box){
   const pairs = Object.entries(box.prices).map(([shop,price]) => ({shop,price}));
   pairs.sort((a,b) => b.price - a.price);
-  return { sorted: pairs, best: pairs[0] };
+  return { sorted: pairs, best: pairs[0] || null };
 }
 
 // 前日比・先週比バッジ（v=差分円。null は非表示、上昇=緑/下落=赤/±0=灰）
@@ -702,10 +724,10 @@ function render(){
       || (catFilter === "シュリンク有り" && b.category === "スペシャルセット"))
     .filter(b => b.name.toLowerCase().includes(query.toLowerCase()))
     .map(b => { const {sorted,best} = bestOf(b); const teika = TEIKA[b.name] ?? null; const release = RELEASE[b.name] ?? null; const ser = series(b.name, b.category);
-      return {...b, sorted, best, teika, release, series: ser, margin: teika != null ? best.price - teika : null}; })
+      return {...b, sorted, best, teika, release, series: ser, margin: (teika != null && best) ? best.price - teika : null}; })
     .filter(r => scopeFilter === "ALL" ? true : scopeFilter === "IN" ? IN_SCOPE.includes(r.series) : r.series === scopeFilter);
 
-  if(sortMode === "best") rows.sort((a,b) => b.best.price - a.best.price);
+  if(sortMode === "best") rows.sort((a,b) => (b.best?.price ?? -Infinity) - (a.best?.price ?? -Infinity));
   else if(sortMode === "margin") rows.sort((a,b) => (b.margin ?? -Infinity) - (a.margin ?? -Infinity));
   else if(sortMode === "release") rows.sort((a,b) => {
     if(!a.release && !b.release) return 0;
@@ -738,11 +760,14 @@ function render(){
       ${moreN>0 ? `<div class="morewrap">${rowsHtml.slice(4).join("")}</div>` : ''}
     </div>${moreN>0 ? `<button class="morebtn" data-more>他${moreN}店を表示 ▾</button>` : ''}`;
     let marginHtml;
-    if(r.margin == null) marginHtml = `<span class="margin na">—</span><span class="teika">定価未設定</span>`;
+    if(r.margin == null) marginHtml = `<span class="margin na">—</span><span class="teika">${r.teika != null ? '定価 ¥'+yen(r.teika) : '定価未設定'}</span>`;
     else { const pos = r.margin >= 0;
       marginHtml = `<span class="margin ${pos?'pos':'neg'}">${pos?'+':'−'}¥${yen(Math.abs(r.margin))}</span><span class="teika">定価 ¥${yen(r.teika)}</span>`; }
+    const bestStatHtml = r.best
+      ? `<span class="bestprice"><span class="yen">¥</span>${yen(r.best.price)}</span><span class="bestshop">@ <b>${r.best.shop}</b></span>`
+      : `<span class="bestprice soon">近日発売</span><span class="bestshop">買取準備中</span>`;
     return `
-    <div class="card${anim ? '' : ' noanim'}" data-cardkey="${attrEsc(key)}" style="animation-delay:${i*40}ms">
+    <div class="card${anim ? '' : ' noanim'}${r.best ? '' : ' upcoming'}" data-cardkey="${attrEsc(key)}" style="animation-delay:${i*40}ms">
       <div class="chead">
         <div>
           <div class="cname">${r.name}</div>
@@ -756,8 +781,7 @@ function render(){
       <div class="stats">
         <div class="stat">
           <span class="slabel">最高買取額</span>
-          <span class="bestprice"><span class="yen">¥</span>${yen(r.best.price)}</span>
-          <span class="bestshop">@ <b>${r.best.shop}</b></span>
+          ${bestStatHtml}
         </div>
         <div class="stat">
           <span class="slabel">定価との差益</span>
