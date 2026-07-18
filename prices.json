@@ -1,7 +1,7 @@
 [
   {
     "shop": "トレカマサイ(X)",
-    "scraped_at": "2026-07-18T06:00:57.197107+00:00",
+    "scraped_at": "2026-07-18T06:30:58.113316+00:00",
     "items": [
       {
         "name": "アビスアイ",
@@ -347,7 +347,7 @@
   },
   {
     "shop": "買取マスター(X)",
-    "scraped_at": "2026-07-18T06:00:57.201394+00:00",
+    "scraped_at": "2026-07-18T06:30:58.121739+00:00",
     "items": [
       {
         "name": "アビスアイ",
@@ -433,8 +433,38 @@
   },
   {
     "shop": "BH秋葉原(X)",
-    "scraped_at": "2026-07-18T06:00:57.203681+00:00",
+    "scraped_at": "2026-07-18T06:30:58.129268+00:00",
     "items": [
+      {
+        "name": "MANGA BOOSTER01SB01",
+        "price": 157000,
+        "category": "シュリンク有り"
+      },
+      {
+        "name": "MANGA BOOSTER02SB02",
+        "price": 86000,
+        "category": "シュリンク有り"
+      },
+      {
+        "name": "誇り高き戦闘民族FB08",
+        "price": 12000,
+        "category": "シュリンク有り"
+      },
+      {
+        "name": "CROSS FORCEFB10",
+        "price": 14700,
+        "category": "シュリンク有り"
+      },
+      {
+        "name": "DUAL EVOLUTIONFB09",
+        "price": 13500,
+        "category": "シュリンク有り"
+      },
+      {
+        "name": "神龍への願いFB07",
+        "price": 28500,
+        "category": "シュリンク有り"
+      },
       {
         "name": "ロマンスドーンop-01カートン",
         "price": 41000,
@@ -571,23 +601,23 @@
         "category": "シュリンク有り"
       },
       {
+        "name": "アビスアイ",
+        "price": 10800,
+        "category": "シュリンク有り"
+      },
+      {
+        "name": "ニンジャスピナー",
+        "price": 11500,
+        "category": "シュリンク有り"
+      },
+      {
         "name": "ムニキスゼロ",
         "price": 8800,
         "category": "シュリンク有り"
       },
       {
-        "name": "アビスアイ",
-        "price": 11000,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "ニンジャスピナー",
-        "price": 11700,
-        "category": "シュリンク有り"
-      },
-      {
         "name": "MEGAドリームex",
-        "price": 15300,
+        "price": 15200,
         "category": "シュリンク有り"
       },
       {
@@ -602,22 +632,22 @@
       },
       {
         "name": "MEGA 拡張パックメガシンフォニア",
-        "price": 11500,
+        "price": 11000,
         "category": "シュリンク有り"
       },
       {
         "name": "MEGA 拡張パックメガブレイブ",
-        "price": 13000,
+        "price": 12500,
         "category": "シュリンク有り"
       },
       {
         "name": "メガシンフォニア",
-        "price": 11500,
+        "price": 11000,
         "category": "シュリンク有り"
       },
       {
         "name": "メガブレイブ",
-        "price": 13000,
+        "price": 12500,
         "category": "シュリンク有り"
       },
       {
@@ -692,7 +722,7 @@
       },
       {
         "name": "変幻の仮面",
-        "price": 13500,
+        "price": 16000,
         "category": "シュリンク有り"
       },
       {
@@ -827,7 +857,7 @@
       },
       {
         "name": "VMAXクライマックス",
-        "price": 36500,
+        "price": 37500,
         "category": "シュリンク有り"
       },
       {
@@ -842,7 +872,7 @@
       },
       {
         "name": "蒼空ストリーム",
-        "price": 270000,
+        "price": 275000,
         "category": "シュリンク有り"
       },
       {
@@ -899,46 +929,16 @@
         "name": "25th ANNIVERSARY GOLDEN",
         "price": 275000,
         "category": "シュリンク有り"
-      },
-      {
-        "name": "MANGA BOOSTER01SB01",
-        "price": 157000,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "MANGA BOOSTER02SB02",
-        "price": 86000,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "誇り高き戦闘民族FB08",
-        "price": 12000,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "CROSS FORCEFB10",
-        "price": 14700,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "DUAL EVOLUTIONFB09",
-        "price": 13500,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "神龍への願いFB07",
-        "price": 28500,
-        "category": "シュリンク有り"
       }
     ]
   },
   {
     "shop": "エノキング",
-    "scraped_at": "2026-07-18T06:02:12.602335+00:00",
+    "scraped_at": "2026-07-18T06:32:14.040252+00:00",
     "items": [
       {
         "name": "アビスアイ",
-        "price": 11500,
+        "price": 11100,
         "category": "シュリンク有り"
       },
       {
@@ -958,82 +958,82 @@
       },
       {
         "name": "インフェルノX",
-        "price": 23500,
+        "price": 23600,
         "category": "シュリンク有り"
       },
       {
         "name": "メガブレイブ",
-        "price": 12800,
+        "price": 13000,
         "category": "シュリンク有り"
       },
       {
         "name": "メガシンフォニア",
-        "price": 11800,
+        "price": 12000,
         "category": "シュリンク有り"
       },
       {
         "name": "ブラックボルト",
-        "price": 26300,
+        "price": 25000,
         "category": "シュリンク有り"
       },
       {
         "name": "ホワイトフレア",
-        "price": 23000,
+        "price": 22000,
         "category": "シュリンク有り"
       },
       {
         "name": "ブラックボルトDX",
-        "price": 26300,
+        "price": 26500,
         "category": "シュリンク有り"
       },
       {
         "name": "ホワイトフレアDX",
-        "price": 22300,
+        "price": 23000,
         "category": "シュリンク有り"
       },
       {
         "name": "ロケット団の栄光",
-        "price": 27000,
+        "price": 27500,
         "category": "シュリンク有り"
       },
       {
         "name": "熱風のアリーナ",
-        "price": 20100,
+        "price": 20400,
         "category": "シュリンク有り"
       },
       {
         "name": "バトルパートナーズ",
-        "price": 11200,
+        "price": 11300,
         "category": "シュリンク有り"
       },
       {
         "name": "テラスタルフェスex",
-        "price": 21300,
+        "price": 21500,
         "category": "シュリンク有り"
       },
       {
         "name": "超電ブレイカー",
-        "price": 33600,
+        "price": 34200,
         "category": "シュリンク有り"
       },
       {
         "name": "楽園ドラゴーナ",
-        "price": 16500,
+        "price": 16600,
         "category": "シュリンク有り"
       },
       {
         "name": "ステラミラクル",
-        "price": 12300,
+        "price": 12400,
         "category": "シュリンク有り"
       },
       {
         "name": "ナイトワンダラー",
-        "price": 12300,
+        "price": 12400,
         "category": "シュリンク有り"
       },
       {
         "name": "変幻の仮面",
-        "price": 14400,
+        "price": 14500,
         "category": "シュリンク有り"
       },
       {
@@ -1053,7 +1053,7 @@
       },
       {
         "name": "シャイニートレジャーex",
-        "price": 20500,
+        "price": 20700,
         "category": "シュリンク有り"
       },
       {
@@ -1063,57 +1063,57 @@
       },
       {
         "name": "未来の一閃",
-        "price": 12000,
+        "price": 12200,
         "category": "シュリンク有り"
       },
       {
         "name": "レイジングサーフ",
-        "price": 14300,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "黒炎の支配者",
-        "price": 19500,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "ポケモンカード151",
-        "price": 59000,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "VSTARユニバース",
-        "price": 31500,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "スノーハザード",
-        "price": 12500,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "クレイバースト",
-        "price": 12100,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "トリプレットビート",
-        "price": 18500,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "スカーレットex",
         "price": 14600,
         "category": "シュリンク有り"
       },
       {
+        "name": "黒炎の支配者",
+        "price": 19700,
+        "category": "シュリンク有り"
+      },
+      {
+        "name": "ポケモンカード151",
+        "price": 59500,
+        "category": "シュリンク有り"
+      },
+      {
+        "name": "VSTARユニバース",
+        "price": 31800,
+        "category": "シュリンク有り"
+      },
+      {
+        "name": "スノーハザード",
+        "price": 12700,
+        "category": "シュリンク有り"
+      },
+      {
+        "name": "クレイバースト",
+        "price": 12200,
+        "category": "シュリンク有り"
+      },
+      {
+        "name": "トリプレットビート",
+        "price": 18600,
+        "category": "シュリンク有り"
+      },
+      {
+        "name": "スカーレットex",
+        "price": 14800,
+        "category": "シュリンク有り"
+      },
+      {
         "name": "バイオレットex",
-        "price": 11500,
+        "price": 11700,
         "category": "シュリンク有り"
       },
       {
         "name": "パラダイムトリガー",
-        "price": 21000,
+        "price": 21100,
         "category": "シュリンク有り"
       },
       {
@@ -1208,62 +1208,62 @@
       },
       {
         "name": "アビスアイ",
-        "price": 9200,
+        "price": 9500,
         "category": "シュリンク無し"
       },
       {
         "name": "ニンジャスピナー",
-        "price": 10000,
+        "price": 10500,
         "category": "シュリンク無し"
       },
       {
         "name": "ムニキスゼロ",
-        "price": 8400,
+        "price": 8500,
         "category": "シュリンク無し"
       },
       {
         "name": "メガドリームex",
-        "price": 13600,
+        "price": 13700,
         "category": "シュリンク無し"
       },
       {
         "name": "インフェルノX",
-        "price": 15000,
+        "price": 19100,
         "category": "シュリンク無し"
       },
       {
         "name": "メガブレイブ",
-        "price": 10000,
+        "price": 10100,
         "category": "シュリンク無し"
       },
       {
         "name": "メガシンフォニア",
-        "price": 9100,
+        "price": 9500,
         "category": "シュリンク無し"
       },
       {
         "name": "ブラックボルト",
-        "price": 22000,
+        "price": 22100,
         "category": "シュリンク無し"
       },
       {
         "name": "ホワイトフレア",
-        "price": 19500,
+        "price": 19600,
         "category": "シュリンク無し"
       },
       {
         "name": "ブラックボルトDX",
-        "price": 18500,
+        "price": 18600,
         "category": "シュリンク無し"
       },
       {
         "name": "ホワイトフレアDX",
-        "price": 17500,
+        "price": 17600,
         "category": "シュリンク無し"
       },
       {
         "name": "ロケット団の栄光",
-        "price": 21500,
+        "price": 22000,
         "category": "シュリンク無し"
       },
       {
@@ -1293,12 +1293,12 @@
       },
       {
         "name": "ステラミラクル",
-        "price": 9800,
+        "price": 11800,
         "category": "シュリンク無し"
       },
       {
         "name": "ナイトワンダラー",
-        "price": 9800,
+        "price": 11800,
         "category": "シュリンク無し"
       },
       {
@@ -1348,7 +1348,7 @@
       },
       {
         "name": "ポケモンカード151",
-        "price": 52000,
+        "price": 54000,
         "category": "シュリンク無し"
       },
       {
@@ -1383,12 +1383,12 @@
       },
       {
         "name": "パラダイムトリガー",
-        "price": 16000,
+        "price": 20000,
         "category": "シュリンク無し"
       },
       {
         "name": "白熱のアルカナ",
-        "price": 10000,
+        "price": 10500,
         "category": "シュリンク無し"
       },
       {
@@ -1428,7 +1428,7 @@
       },
       {
         "name": "vmaxクライマックス",
-        "price": 35000,
+        "price": 37000,
         "category": "シュリンク無し"
       },
       {
@@ -1443,7 +1443,7 @@
       },
       {
         "name": "イーブイヒーローズ",
-        "price": 135000,
+        "price": 138000,
         "category": "シュリンク無し"
       },
       {
@@ -1498,7 +1498,7 @@
       },
       {
         "name": "ロケット団の栄光 アタッシュケースセット",
-        "price": 27000,
+        "price": 30000,
         "category": "シュリンク有り"
       },
       {
@@ -1563,7 +1563,7 @@
       },
       {
         "name": "OP-16 決戦の刻",
-        "price": 13100,
+        "price": 14000,
         "category": "シュリンク有り"
       },
       {
@@ -1573,172 +1573,172 @@
       },
       {
         "name": "OP-14 蒼海の七傑",
-        "price": 15600,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "OP-13 受け継がれる意志",
-        "price": 21800,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "OP-12 師弟の絆",
         "price": 17000,
         "category": "シュリンク有り"
       },
       {
+        "name": "OP-13 受け継がれる意志",
+        "price": 24300,
+        "category": "シュリンク有り"
+      },
+      {
+        "name": "OP-12 師弟の絆",
+        "price": 17500,
+        "category": "シュリンク有り"
+      },
+      {
         "name": "OP-11 神速の拳",
-        "price": 39000,
+        "price": 39400,
         "category": "シュリンク有り"
       },
       {
         "name": "OP-10 王族の血統",
-        "price": 12000,
+        "price": 12100,
         "category": "シュリンク有り"
       },
       {
         "name": "OP-09 新たなる皇帝",
-        "price": 22000,
+        "price": 23500,
         "category": "シュリンク有り"
       },
       {
         "name": "OP-08 二つの伝説",
-        "price": 10000,
+        "price": 12500,
         "category": "シュリンク有り"
       },
       {
         "name": "OP-07 500年後の未来",
-        "price": 19800,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "OP-06 双璧の覇者",
-        "price": 22600,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "OP-05 新時代の主役",
-        "price": 62000,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "OP-04 謀略の王国",
         "price": 20500,
         "category": "シュリンク有り"
       },
       {
+        "name": "OP-06 双璧の覇者",
+        "price": 23200,
+        "category": "シュリンク有り"
+      },
+      {
+        "name": "OP-05 新時代の主役",
+        "price": 68200,
+        "category": "シュリンク有り"
+      },
+      {
+        "name": "OP-04 謀略の王国",
+        "price": 21300,
+        "category": "シュリンク有り"
+      },
+      {
         "name": "OP-03 強大な敵",
-        "price": 18500,
+        "price": 18000,
         "category": "シュリンク有り"
       },
       {
         "name": "OP-02 頂上決戦",
-        "price": 24000,
+        "price": 24500,
         "category": "シュリンク有り"
       },
       {
         "name": "OP-01 ロマンスドーン",
-        "price": 40500,
+        "price": 41000,
         "category": "シュリンク有り"
       },
       {
         "name": "EB-04 EGGHEAD CRISIS",
-        "price": 14000,
+        "price": 15000,
         "category": "シュリンク有り"
       },
       {
         "name": "EB-03 Heroines Edition",
-        "price": 21000,
+        "price": 23600,
         "category": "シュリンク有り"
       },
       {
         "name": "EB-02 Anime 25th collection",
-        "price": 36000,
+        "price": 39000,
         "category": "シュリンク有り"
       },
       {
         "name": "EB-01 メモリアルコレクション",
-        "price": 21000,
+        "price": 23800,
         "category": "シュリンク有り"
       },
       {
         "name": "PRB-02 ONE PIECE CARD THE BEST vol.2",
-        "price": 11000,
+        "price": 12200,
         "category": "シュリンク有り"
       },
       {
         "name": "PRB-01 ONE PIECE CARD THE BEST",
-        "price": 21500,
+        "price": 22300,
         "category": "シュリンク有り"
       },
       {
         "name": "OP-16 決戦の刻[カートン]",
-        "price": 186000,
+        "price": 191000,
         "category": "シュリンク有り"
       },
       {
         "name": "OP-15 神の島の冒険[カートン]",
-        "price": 206000,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "OP-14 蒼海の七傑[カートン]",
-        "price": 189000,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "OP-13 受け継がれる意志[カートン]",
-        "price": 321000,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "OP-12 師弟の絆[カートン]",
         "price": 216000,
         "category": "シュリンク有り"
       },
       {
+        "name": "OP-14 蒼海の七傑[カートン]",
+        "price": 214600,
+        "category": "シュリンク有り"
+      },
+      {
+        "name": "OP-13 受け継がれる意志[カートン]",
+        "price": 341000,
+        "category": "シュリンク有り"
+      },
+      {
+        "name": "OP-12 師弟の絆[カートン]",
+        "price": 221000,
+        "category": "シュリンク有り"
+      },
+      {
         "name": "OP-11 神速の拳[カートン]",
-        "price": 461000,
+        "price": 483400,
         "category": "シュリンク有り"
       },
       {
         "name": "OP-10 王族の血統[カートン]",
-        "price": 155000,
+        "price": 156000,
         "category": "シュリンク有り"
       },
       {
         "name": "OP-09 新たなる皇帝[カートン]",
-        "price": 281000,
+        "price": 291400,
         "category": "シュリンク有り"
       },
       {
         "name": "OP-08 二つの伝説[カートン]",
-        "price": 139000,
+        "price": 154600,
         "category": "シュリンク有り"
       },
       {
         "name": "OP-07 500年後の未来[カートン]",
-        "price": 246000,
+        "price": 254200,
         "category": "シュリンク有り"
       },
       {
         "name": "OP-06 双璧の覇者[カートン]",
-        "price": 286000,
+        "price": 296200,
         "category": "シュリンク有り"
       },
       {
         "name": "OP-05 新時代の主役[カートン]",
-        "price": 851000,
+        "price": 871000,
         "category": "シュリンク有り"
       },
       {
         "name": "OP-04 謀略の王国[カートン]",
-        "price": 256000,
+        "price": 266200,
         "category": "シュリンク有り"
       },
       {
         "name": "OP-03 強大な敵[カートン]",
-        "price": 231000,
+        "price": 226600,
         "category": "シュリンク有り"
       },
       {
@@ -1748,44 +1748,54 @@
       },
       {
         "name": "OP-01 ロマンスドーン[カートン]",
-        "price": 520000,
+        "price": 519000,
         "category": "シュリンク有り"
       },
       {
         "name": "EB-04 EGGHEAD CRISIS[カートン]",
-        "price": 169000,
+        "price": 190600,
         "category": "シュリンク有り"
       },
       {
         "name": "EB-03 Heroines Edition[カートン]",
-        "price": 271000,
+        "price": 296200,
         "category": "シュリンク有り"
       },
       {
         "name": "EB-02 Anime 25th collection[カートン]",
-        "price": 476000,
+        "price": 456000,
         "category": "シュリンク有り"
       },
       {
         "name": "EB-01 メモリアルコレクション[カートン]",
-        "price": 276000,
+        "price": 296200,
         "category": "シュリンク有り"
       },
       {
         "name": "PRB-02 ONE PIECE CARD THE BEST vol.2[カートン]",
-        "price": 216000,
+        "price": 251000,
         "category": "シュリンク有り"
       },
       {
         "name": "PRB-01 ONE PIECE CARD THE BEST[カートン]",
-        "price": 231000,
+        "price": 236000,
+        "category": "シュリンク有り"
+      },
+      {
+        "name": "ナツコミ 2026 メタキラカード　ワンピース ルフィ",
+        "price": 2500,
+        "category": "シュリンク有り"
+      },
+      {
+        "name": "ONE PIECEカードゲーム スタートデッキEX ルフィ&エース[ST-30]",
+        "price": 20000,
         "category": "シュリンク有り"
       }
     ]
   },
   {
     "shop": "ホムラ",
-    "scraped_at": "2026-07-18T06:03:55.408678+00:00",
+    "scraped_at": "2026-07-18T06:33:47.943817+00:00",
     "items": [
       {
         "name": "【BOX】アビスアイ",
@@ -2661,12 +2671,12 @@
   },
   {
     "shop": "買取スクエア",
-    "scraped_at": "2026-07-18T06:04:01.600133+00:00",
+    "scraped_at": "2026-07-18T06:33:55.686452+00:00",
     "items": []
   },
   {
     "shop": "一丁目",
-    "scraped_at": "2026-07-18T06:04:32.056693+00:00",
+    "scraped_at": "2026-07-18T06:34:26.149511+00:00",
     "items": [
       {
         "name": "【MEGA】 ニンジャスピナー BOX",
@@ -3007,7 +3017,7 @@
   },
   {
     "shop": "ラントゥ",
-    "scraped_at": "2026-07-18T06:09:41.619857+00:00",
+    "scraped_at": "2026-07-18T06:39:36.276145+00:00",
     "items": [
       {
         "name": "ロケット団の栄光 アタッシュケースセット未開封",
@@ -3673,7 +3683,7 @@
   },
   {
     "shop": "コレクト",
-    "scraped_at": "2026-07-18T06:09:44.964321+00:00",
+    "scraped_at": "2026-07-18T06:39:40.116186+00:00",
     "items": [
       {
         "name": "アビスアイ",
@@ -4334,7 +4344,7 @@
   },
   {
     "shop": "ソムリエ",
-    "scraped_at": "2026-07-18T06:09:52.118695+00:00",
+    "scraped_at": "2026-07-18T06:39:47.114400+00:00",
     "items": [
       {
         "name": "メタキラカード夏コミックフェア2026  ナツコミワンピースルフィ",
@@ -4460,7 +4470,7 @@
   },
   {
     "shop": "シンソク",
-    "scraped_at": "2026-07-18T06:10:40.743930+00:00",
+    "scraped_at": "2026-07-18T06:40:35.672418+00:00",
     "items": [
       {
         "name": "25th クリーチャーズデッキ(未開封)",
