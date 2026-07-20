@@ -1,7 +1,7 @@
 [
   {
     "shop": "トレカマサイ(X)",
-    "scraped_at": "2026-07-20T05:30:57.146521+00:00",
+    "scraped_at": "2026-07-20T06:00:57.164460+00:00",
     "items": [
       {
         "name": "アビスアイ",
@@ -347,7 +347,7 @@
   },
   {
     "shop": "買取マスター(X)",
-    "scraped_at": "2026-07-20T05:30:57.150936+00:00",
+    "scraped_at": "2026-07-20T06:00:57.168910+00:00",
     "items": [
       {
         "name": "MEGAドリームex",
@@ -433,7 +433,7 @@
   },
   {
     "shop": "BH秋葉原(X)",
-    "scraped_at": "2026-07-20T05:30:57.153100+00:00",
+    "scraped_at": "2026-07-20T06:00:57.171329+00:00",
     "items": [
       {
         "name": "ロマンスドーンop-01カートン",
@@ -934,7 +934,7 @@
   },
   {
     "shop": "エノキング",
-    "scraped_at": "2026-07-20T05:32:14.388917+00:00",
+    "scraped_at": "2026-07-20T06:02:12.975283+00:00",
     "items": [
       {
         "name": "アビスアイ",
@@ -983,12 +983,12 @@
       },
       {
         "name": "ブラックボルトDX",
-        "price": 26500,
+        "price": 26700,
         "category": "シュリンク有り"
       },
       {
         "name": "ホワイトフレアDX",
-        "price": 23000,
+        "price": 23500,
         "category": "シュリンク有り"
       },
       {
@@ -1695,7 +1695,7 @@
   },
   {
     "shop": "ホムラ",
-    "scraped_at": "2026-07-20T05:33:54.998050+00:00",
+    "scraped_at": "2026-07-20T06:03:48.637758+00:00",
     "items": [
       {
         "name": "【BOX】アビスアイ",
@@ -2566,353 +2566,17 @@
   },
   {
     "shop": "買取スクエア",
-    "scraped_at": "2026-07-20T05:34:02.389716+00:00",
+    "scraped_at": "2026-07-20T06:03:56.592437+00:00",
     "items": []
   },
   {
     "shop": "一丁目",
-    "scraped_at": "2026-07-20T05:34:32.968342+00:00",
-    "items": [
-      {
-        "name": "【MEGA】 ニンジャスピナー BOX",
-        "price": 11700,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "【MEGA】 ニンジャスピナー BOX",
-        "price": 9500,
-        "category": "シュリンク無し"
-      },
-      {
-        "name": "【MEGA】 ムニキスゼロ BOX",
-        "price": 8900,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "【MEGA】 ムニキスゼロ BOX",
-        "price": 8000,
-        "category": "シュリンク無し"
-      },
-      {
-        "name": "【MEGA】 MEGAドリームex BOX",
-        "price": 15000,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "【MEGA】 MEGAドリームex BOX",
-        "price": 13500,
-        "category": "シュリンク無し"
-      },
-      {
-        "name": "【MEGA】 インフェルノX BOX",
-        "price": 23500,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "【MEGA】 インフェルノX BOX",
-        "price": 16000,
-        "category": "シュリンク無し"
-      },
-      {
-        "name": "【MEGA】 メガブレイブ BOX",
-        "price": 12500,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "【MEGA】 メガブレイブ BOX",
-        "price": 10000,
-        "category": "シュリンク無し"
-      },
-      {
-        "name": "【MEGA】メガシンフォニア BOX",
-        "price": 11000,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "【MEGA】メガシンフォニア BOX",
-        "price": 9500,
-        "category": "シュリンク無し"
-      },
-      {
-        "name": "【S＆V】ブラックボルト BOX",
-        "price": 25500,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "【S＆V】ホワイトフレア BOX",
-        "price": 23000,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "【S＆V】ブラックボルト デラックス BOX",
-        "price": 23000,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "【S＆V】ホワイトフレア デラックス BOX",
-        "price": 20000,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "【S＆V】ロケット団の栄光 BOX",
-        "price": 27500,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "【S＆V】熱風のアリーナ BOX",
-        "price": 20500,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "【S＆V】バトルパートナーズ BOX",
-        "price": 10800,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "【S＆V】テラスタルフェスex BOX",
-        "price": 21000,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "【S＆V】超電ブレイカー BOX",
-        "price": 34000,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "【S＆V】楽園ドラゴーナ BOX",
-        "price": 16500,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "【S＆V】ステラミラクル BOX",
-        "price": 11800,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "【S＆V】ナイトワンダラー BOX",
-        "price": 12000,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "【S＆V】変幻の仮面 BOX",
-        "price": 14000,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "【S＆V】クリムゾンヘイズ BOX",
-        "price": 14500,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "【S＆V】ワイルドフォース BOX",
-        "price": 14200,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "【S＆V】サイバージャッジ BOX",
-        "price": 12000,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "【S＆V】シャイニートレジャーex BOX",
-        "price": 20200,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "【S＆V】古代の咆哮 BOX",
-        "price": 12000,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "【S＆V】未来の一閃 BOX",
-        "price": 11600,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "【S＆V】レイジングサーフ BOX",
-        "price": 14000,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "【S＆V】黒炎の支配者　BOX",
-        "price": 19500,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "【S＆V】ポケモンカード151 BOX",
-        "price": 58000,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "【S＆V】クレイバースト BOX",
-        "price": 12200,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "【S＆V】スノーハザード BOX",
-        "price": 12500,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "【S＆V】トリプレットビート BOX",
-        "price": 19000,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "【S＆V】バイオレットex BOX",
-        "price": 11500,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "【S＆V】スカーレットex BOX",
-        "price": 14600,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "【S＆S】VSTARユニバース BOX",
-        "price": 31500,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "ポケモンセンター スペシャルBOX ヒロシマ",
-        "price": 19000,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "ポケモンセンター スペシャルBOX　フクオカ",
-        "price": 16000,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "ポケモンセンター スペシャルBOX　トウホク",
-        "price": 15000,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "【MEGA】 アビスアイ BOX",
-        "price": 10800,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "【MEGA】 アビスアイ BOX",
-        "price": 9300,
-        "category": "シュリンク無し"
-      },
-      {
-        "name": "【OP-16】 決戦の刻",
-        "price": 14000,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "【OP-15】 神の島の冒険",
-        "price": 16800,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "【EB-04】 EGGHEAD CRISIS",
-        "price": 15000,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "【OP-14】 蒼海の七傑",
-        "price": 17000,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "【EB-03】 ONE PIECE Heroines Edition",
-        "price": 23600,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "【OP-13】 受け継がれる意志",
-        "price": 24300,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "【OP-12】 師弟の絆",
-        "price": 17500,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "【OP-11】 神速の拳",
-        "price": 39400,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "【EB-02】 Anime 25th collection",
-        "price": 39000,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "【OP-10】 王族の血統",
-        "price": 12100,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "【OP-09】 新たなる皇帝",
-        "price": 23500,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "【OP-08】 二つの伝説",
-        "price": 12500,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "【OP-07】 500年後の未来",
-        "price": 20500,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "【EB-01】 メモリアルコレクション",
-        "price": 23800,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "【OP-06】 双璧の覇者",
-        "price": 23200,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "【OP-05】 新時代の主役",
-        "price": 63200,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "【OP-04】 謀略の王国",
-        "price": 21300,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "【OP-03】 強大な敵",
-        "price": 18500,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "【OP-02】 頂上決戦",
-        "price": 24500,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "【OP-01】 ROMANCE DAWN",
-        "price": 41000,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "【PRB-01】 THE BEST",
-        "price": 22300,
-        "category": "シュリンク有り"
-      },
-      {
-        "name": "【PRB-02】 THE BEST vol.2",
-        "price": 12200,
-        "category": "シュリンク有り"
-      }
-    ]
+    "scraped_at": "2026-07-20T06:03:56.660614+00:00",
+    "items": []
   },
   {
     "shop": "ラントゥ",
-    "scraped_at": "2026-07-20T05:39:44.165535+00:00",
+    "scraped_at": "2026-07-20T06:09:06.387914+00:00",
     "items": [
       {
         "name": "ポケモンカードゲーム スペシャルジャンボカードパック 「名探偵ピカチュウ　ミュウツーGX　Ver.」",
@@ -3446,7 +3110,7 @@
       },
       {
         "name": "ナツコミ ルフィ",
-        "price": 2200,
+        "price": 2600,
         "category": "シュリンク有り"
       },
       {
@@ -3583,7 +3247,7 @@
   },
   {
     "shop": "コレクト",
-    "scraped_at": "2026-07-20T05:39:47.562785+00:00",
+    "scraped_at": "2026-07-20T06:09:09.751332+00:00",
     "items": [
       {
         "name": "アビスアイ",
@@ -4244,7 +3908,7 @@
   },
   {
     "shop": "ソムリエ",
-    "scraped_at": "2026-07-20T05:39:54.518222+00:00",
+    "scraped_at": "2026-07-20T06:09:16.541810+00:00",
     "items": [
       {
         "name": "週刊少年ジャンプ33号 モンキー・D・ルフィ P-159 プロモカード",
@@ -4365,7 +4029,7 @@
   },
   {
     "shop": "シンソク",
-    "scraped_at": "2026-07-20T05:40:43.577173+00:00",
+    "scraped_at": "2026-07-20T06:10:05.945523+00:00",
     "items": [
       {
         "name": "25th クリーチャーズデッキ(未開封)",
