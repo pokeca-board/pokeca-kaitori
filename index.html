@@ -268,6 +268,19 @@ const ALIASES = {
 // 通常/強化拡張=180円×30＝5,400（アビスアイ以降200円×30＝6,000）／ハイクラス=550円×10＝5,500
 // ブラックボルト・ホワイトフレア・151=290円×20＝5,800／DX=1,450円×4＝5,800
 const TEIKA = {
+  // --- ドラゴンボール フュージョンワールド（新規追加）---
+  "FB-01 覚醒の鼓動": 5280,
+  "FB-02 烈火の闘気": 5280,
+  "FB-03 怒りの咆哮": 5280,
+  "FB-04 限界を超えし者": 5280,
+  "FB-05 未知なる冒険": 5280,
+  "FB-06 迫り来る脅威": 5280,
+  "FB-07 神龍への願い": 5280,
+  "FB-08 誇り高き戦闘民族": 5280,
+  "FB-09 DUAL EVOLUTION": 5280,
+  "FB-10 CROSS FORCE": 5280,
+  "SB-01 MANGA BOOSTER 01": 7920,       // 330円×24パック（40周年記念プレミア価格）
+  "SB-02 MANGA BOOSTER 02": 7920,       // SB-01と同一プレミア価格帯と推定
   // --- 通常・強化拡張パック（180円×30＝5,400）---
   "黒炎の支配者": 5400,
   "レイジングサーフ": 5400,
@@ -360,6 +373,19 @@ const TEIKA = {
 };
 // 共通名 → 発売日（出典: 公式 pokemon-card.com 等 / 2024年分は一般情報。未掲載は未設定）
 const RELEASE = {
+  // --- ドラゴンボール フュージョンワールド（新規追加）---
+  "FB-01 覚醒の鼓動": "2024-02-16",
+  "FB-02 烈火の闘気": "2024-05-10",
+  "FB-03 怒りの咆哮": "2024-08-02",
+  "FB-04 限界を超えし者": "2024-11-08",
+  "FB-05 未知なる冒険": "2025-02-08",
+  "FB-06 迫り来る脅威": "2025-04-26",
+  "FB-07 神龍への願い": "2025-08-29",
+  "FB-08 誇り高き戦闘民族": "2025-11-08",
+  "FB-09 DUAL EVOLUTION": "2026-03-14",
+  "FB-10 CROSS FORCE": "2026-06-13",
+  "SB-01 MANGA BOOSTER 01": "2025-06-28",
+  "SB-02 MANGA BOOSTER 02": "2025-10-24",  // 公式サイト更新日ベース（要確認）
   // --- 追加：発売日未登録だった商品 ---
   "フュージョンアーツ": "2021-09-24",
   "VSTARユニバース": "2022-12-02",
@@ -566,6 +592,16 @@ function opCode(raw){
   const m = String(raw).match(/(OP|EB|PRB)-?\s*0*(\d{1,2})/i);
   return m ? m[1].toUpperCase() + "-" + String(m[2]).padStart(2, "0") : null;
 }
+const DB_SETS = {
+  "FB-01":"覚醒の鼓動","FB-02":"烈火の闘気","FB-03":"怒りの咆哮","FB-04":"限界を超えし者",
+  "FB-05":"未知なる冒険","FB-06":"迫り来る脅威","FB-07":"神龍への願い","FB-08":"誇り高き戦闘民族",
+  "FB-09":"DUAL EVOLUTION","FB-10":"CROSS FORCE",
+  "SB-01":"MANGA BOOSTER 01","SB-02":"MANGA BOOSTER 02",
+};
+function dbCode(raw){
+  const m = String(raw).match(/(FB|SB)-?\s*0*(\d{1,2})/i);
+  return m ? m[1].toUpperCase() + "-" + String(m[2]).padStart(2, "0") : null;
+}
 const PC_REGIONS = ["トウホク","フクオカ","ヒロシマ","オオサカ","サッポロ","ナゴヤ","トウキョウ","カナザワ","シブヤ","キョウト","ヨコハマ"];
 function normalize(raw){
   const s = String(raw);
@@ -593,6 +629,8 @@ function normalize(raw){
     const core = cleanName(br ? br[1] : s.replace(/.*スペシャルデッキセット(ex)?/, ""));
     return "スペシャルデッキセット " + core;
   }
+  const dcode = dbCode(raw);                                   // ドラゴンボールもコードで名寄せ
+  if(dcode) return DB_SETS[dcode] ? dcode + " " + DB_SETS[dcode] : dcode;
   const code = opCode(raw);                                   // ワンピースはコードで名寄せ
   if(code) return OP_SETS[code] ? code + " " + OP_SETS[code] : code;
   const c = cleanName(raw);
@@ -603,7 +641,7 @@ function normalize(raw){
 const MEGA_SETS = ["インフェルノX","ニンジャスピナー","ムニキスゼロ","アビスアイ","ストームエメラルダ","メガブレイブ","メガシンフォニア","メガドリームex"];
 const SV_SETS   = ["クリムゾンヘイズ","変幻の仮面","ナイトワンダラー","ステラミラクル","楽園ドラゴーナ","超電ブレイカー","テラスタルフェスティバルex","バトルパートナーズ","ブラックボルト","ホワイトフレア","ブラックボルトDX","ホワイトフレアDX","熱風のアリーナ","ロケット団の栄光","ワイルドフォース","サイバージャッジ","古代の咆哮","未来の一閃","シャイニートレジャーex","黒炎の支配者","クレイバースト","スノーハザード","レイジングサーフ","スカーレットex","バイオレットex","トリプレットビート","151"];
 const SP_CANON = /^ポケモンセンター |^スペシャルデッキセット| センターセット$|スタートデッキ100 バトルコレクション|アタッシュケースセット|スペシャル|GOLDEN|ANNIVERSARY|25th|イーブイズ|デッキセット|ジムセット|コレクション|プレシャス|プレミアム|^Classic$|ワールドチャンピオンシップ/;
-const IN_SCOPE = ["MEGA","SV","スペシャル","ONE PIECE"];
+const IN_SCOPE = ["MEGA","SV","スペシャル","ONE PIECE","ドラゴンボール"];
 // 発売告知済みだが、まだどの店も買取価格を出していない商品。
 // 「発売日」「定価」だけの空カードとして先出し表示する（店が扱い始めたら自動で実データに切り替わる）。
 const UPCOMING = [
@@ -615,6 +653,7 @@ const UPCOMING = [
 function series(name, category){
   const n = String(name);
   if(/^(OP|EB|PRB)-\d/i.test(n)) return "ONE PIECE";
+  if(/^(FB|SB)-\d/i.test(n)) return "ドラゴンボール";
   if(SP_CANON.test(n)) return "スペシャル";                 // ポケセン地域BOX/スペシャルデッキセット/センターセット
   if(category === "スペシャルセット") return "スペシャル";   // スペシャルは店のカテゴリ基準（緩い名前判定は旧品を大量誤検出するため廃止）
   if(MEGA_SETS.includes(n)) return "MEGA";                  // メガは明示リストのみ（メガニウム/メガバトルデッキ等の誤検出を防ぐ）
@@ -688,7 +727,7 @@ function load(data){
 }
 
 function buildSeries(){
-  const opts = [["ALL","すべて"],["MEGA","MEGA"],["スペシャル","スペシャル"],["SV","SV"],["ONE PIECE","ONE PIECE"]];
+  const opts = [["ALL","すべて"],["MEGA","MEGA"],["スペシャル","スペシャル"],["SV","SV"],["ONE PIECE","ONE PIECE"],["ドラゴンボール","ドラゴンボール"]];
   const el = document.getElementById("series");
   el.innerHTML = opts.map(([v,l]) => `<button data-scope="${v}" class="${v===scopeFilter?'on':''}">${l}</button>`).join("");
   el.querySelectorAll("button").forEach(b => b.addEventListener("click", () => {
