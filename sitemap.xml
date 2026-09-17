@@ -36,16 +36,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://toreca-hikaku.com/p/30th-celebration-futuristic-79968947.html</loc>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://toreca-hikaku.com/p/30th-celebration-53213104.html</loc>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://toreca-hikaku.com/p/eb-01-37582676.html</loc>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -361,6 +351,21 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://toreca-hikaku.com/p/item-51532088.html</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://toreca-hikaku.com/p/item-75226760.html</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://toreca-hikaku.com/p/item-80905297.html</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://toreca-hikaku.com/p/item-59260445.html</loc>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -452,11 +457,6 @@
   </url>
   <url>
     <loc>https://toreca-hikaku.com/p/item-67073258.html</loc>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://toreca-hikaku.com/p/item-72980100.html</loc>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
